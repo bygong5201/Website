@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S.H.A.P.E. Lab - Systems for Hybrid-Additive Process Engineering | Penn State</title>
   <meta name="description" content="The mission of the SHAPE Lab is to advance Additive Manufacturing, Hybrid Manufacturing, and Sand-Printing for Metal Casting.">
-  <link rel="preload" as="image" href="additive-manufacturing-hero/assets/additive-blueprint-bg-1920.png">
-  <link rel="preload" as="image" href="additive-manufacturing-hero/assets/additive-blueprint-bg-2560.png" media="(min-width: 1800px)">
+  <link rel="preload" as="image" href="additive-manufacturing-hero/assets/shape-parallax-background.png">
   <style>
     :root {
       --background: #fcfbf8;
@@ -22,14 +21,14 @@
       --radius: 16px;
       --shadow-soft: 0 10px 40px -20px rgba(19, 33, 58, 0.35);
       --shadow-elegant: 0 20px 60px -20px rgba(19, 41, 75, 0.42);
-      --am-bg-image: url("additive-manufacturing-hero/assets/additive-blueprint-bg-1920.png");
+      --am-bg-image: url("additive-manufacturing-hero/assets/shape-parallax-background.png");
+      --am-bg-width: 100vw;
+      --am-bg-size: var(--am-bg-width) auto;
+      --am-bg-y: 0px;
       --am-bg-paper: #f8fbff;
       --am-blue: 83, 177, 255;
       --am-ink: 7, 21, 38;
       --am-parallax-overscan: 2%;
-      --am-parallax-height: calc(100dvh + 360px);
-      --am-parallax-offset: -180px;
-      --am-parallax-travel: -150px;
     }
 
     * { box-sizing: border-box; }
@@ -166,13 +165,13 @@
 
     .parallax-layer {
       position: absolute;
-      top: var(--am-parallax-offset);
+      top: 0;
       right: calc(var(--am-parallax-overscan) * -1);
       left: calc(var(--am-parallax-overscan) * -1);
-      height: var(--am-parallax-height);
+      height: 100%;
       opacity: 1;
       transform: translate3d(0, 0, 0);
-      will-change: transform;
+      will-change: contents;
       backface-visibility: hidden;
       contain: paint;
     }
@@ -182,11 +181,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(248, 251, 255, 0.22) 0%, rgba(248, 251, 255, 0.04) 42%, rgba(248, 251, 255, 0.16) 100%),
+        linear-gradient(90deg, rgba(248, 251, 255, 0.14) 0%, rgba(248, 251, 255, 0.02) 42%, rgba(248, 251, 255, 0.1) 100%),
         var(--am-bg-image);
       background-repeat: no-repeat;
-      background-position: center top;
-      background-size: cover;
+      background-position: center var(--am-bg-y);
+      background-size: var(--am-bg-size);
       opacity: 0.95;
     }
 
@@ -202,7 +201,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      opacity: 0.28;
+      opacity: 1;
       transform: scale(1.12);
       animation: heroZoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
@@ -218,8 +217,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 38%, rgba(7, 21, 38, 0.08), rgba(7, 21, 38, 0.34) 66%),
-        linear-gradient(180deg, rgba(7, 21, 38, 0.18), rgba(7, 21, 38, 0.48));
+        radial-gradient(circle at 50% 38%, rgba(7, 21, 38, 0.1), rgba(7, 21, 38, 0.42) 66%),
+        linear-gradient(180deg, rgba(7, 21, 38, 0.22), rgba(7, 21, 38, 0.58));
     }
 
     .hero-inner {
@@ -753,22 +752,19 @@
 
     @media (min-width: 1800px) {
       :root {
-        --am-bg-image: url("additive-manufacturing-hero/assets/additive-blueprint-bg-2560.png");
         --am-parallax-overscan: 2.5%;
+        --am-bg-width: min(100vw, 1920px);
       }
     }
 
     @media (max-width: 900px) {
       :root {
         --am-parallax-overscan: 4%;
-        --am-parallax-height: calc(100dvh + 220px);
-        --am-parallax-offset: -120px;
-        --am-parallax-travel: -80px;
+        --am-bg-width: 180vw;
       }
 
       .parallax-layer::before {
-        background-position: 62% top;
-        background-size: auto 100%;
+        background-position: center var(--am-bg-y);
         opacity: 0.92;
       }
     }
@@ -832,9 +828,9 @@
         <a href="#home">Home</a>
         <a href="#research">Research</a>
         <a href="#team">Team</a>
-        <a href="#publications">Publications</a>
         <a href="#news">News</a>
         <a href="#sponsors">Sponsors</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -950,13 +946,25 @@
         </article>
 
         <div class="team-group reveal">
-          <h3 class="team-group-title">Post-Doctorate and Graduate Researchers</h3>
+          <h3 class="team-group-title">Post-Graduate Researchers</h3>
           <div class="grid cards-4">
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/78A8608-211x300.jpg" alt="Aishwarya Deshpande" decoding="async" loading="lazy"></div><div class="card-body"><h4>Aishwarya Deshpande, Ph.D.</h4></div></article>
+          </div>
+        </div>
+
+        <div class="team-group reveal">
+          <h3 class="team-group-title">Ph.D. Students</h3>
+          <div class="grid cards-4">
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/Kazi-4x5-1-240x300.jpg" alt="Kazi Safowan Shahed" decoding="async" loading="lazy"></div><div class="card-body"><h4>Kazi Safowan Shahed</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/Headshot-e1775499920484-236x300.png" alt="Jacklyn Griffis" decoding="async" loading="lazy"></div><div class="card-body"><h4>Jacklyn Griffis</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/DSC_0136-e1665517373923-265x300.jpg" alt="Avez Shaikh" decoding="async" loading="lazy"></div><div class="card-body"><h4>Avez Shaikh</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/ashish-ad60a0810bc29cdc-240x300.jpg" alt="Ashish Jacob" decoding="async" loading="lazy"></div><div class="card-body"><h4>Ashish Jacob</h4></div></article>
+          </div>
+        </div>
+
+        <div class="team-group reveal">
+          <h3 class="team-group-title">Master's Students</h3>
+          <div class="grid cards-4">
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/bryan-300x300.jpg" alt="Bryan Gong" decoding="async" loading="lazy"></div><div class="card-body"><h4>Bryan Gong</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/Hanlon-Headshot-c8f1b3c9a0932a06-274x300.jpg" alt="Thomas Hanlon" decoding="async" loading="lazy"></div><div class="card-body"><h4>Thomas Hanlon</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/luis-rod-300x247.jpg" alt="Luis Rodriquez" decoding="async" loading="lazy"></div><div class="card-body"><h4>Luis Rodriquez</h4></div></article>
@@ -971,6 +979,57 @@
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/LinkedIn-1-200x300.jpg" alt="Maxwell Bacon" decoding="async" loading="lazy"></div><div class="card-body"><h4>Maxwell Bacon</h4></div></article>
             <article class="card profile-card"><div class="image-frame"><img src="shapelab_photos/shapelab_photos/Taiki-Headshot-266x300.jpg" alt="Taiki Murakami" decoding="async" loading="lazy"></div><div class="card-body"><h4>Taiki Murakami</h4></div></article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section section-pad">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-kicker">News</div>
+          <h2 class="section-title">What's happening at SHAPE.</h2>
+        </div>
+        <article class="news-feature reveal">
+          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/Additive_Manufacturing-G.Manogharan.jpg" alt="Additive manufacturing project" decoding="async" loading="lazy"></div>
+          <div><h3>$1.6M DARPA award for AM fatigue prediction</h3><p>Dr. Manogharan was awarded $1.6 million through DARPA to improve prediction accuracy and reduce compute time for estimating service life of metal parts produced with additive manufacturing.</p></div>
+        </article>
+        <article class="news-feature reveal">
+          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/20250625_125103-1024x768.jpg" alt="Student poster recognition" decoding="async" loading="lazy"></div>
+          <div><h3>Kaitlyn Hartman awarded 2nd place in the MSEC 2025 student poster competition.</h3><p>Recognized for work on functionally graded TPMS lattice structures for biomedical applications.</p></div>
+        </article>
+        <article class="news-feature reveal">
+          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/250096-psn-tpms_blueorange-300x225.jpg" alt="Two-metal 3D printed structure" decoding="async" loading="lazy"></div>
+          <div><h3>Beyond welding: researchers 3D print two metals in a single complex structure.</h3><p>Multi-material additive manufacturing research points toward new structures and joining-free production strategies.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sponsors" class="section section-pad surface">
+      <div class="container">
+        <div class="reveal"><div class="section-kicker">Sponsors</div><h2 class="section-title">Sponsors and partners.</h2><p class="section-lede">SHAPE Lab research is built around collaborations that connect manufacturing science to real application needs.</p></div>
+        <div class="sponsor-grid reveal" aria-label="SHAPE Lab sponsors">
+          <a class="sponsor-card" href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2020/02/NSF_4-Color_bitmap_Logo-298x300.png" alt="National Science Foundation logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>National Science Foundation</h4></div></a>
+          <a class="sponsor-card" href="https://www.americamakes.us/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="http://www.tri-c.edu/programs/engineering-technology/manufacturing-engineering/3d-digital-design-and-manufacturing-technology/images/america-makes.jpg" alt="America Makes logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>America Makes</h4></div></a>
+          <a class="sponsor-card" href="https://www.afrl.af.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://media.defense.gov/2012/Nov/01/2000100887/-1/-1/0/121101-F-JZ008-240.JPG" alt="Air Force Research Laboratory logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>Air Force Research Laboratory</h4></div></a>
+          <a class="sponsor-card" href="https://www.nre.navy.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/Office_of_Naval_Research_Official_Logo-1q0s65d-300x137.png" alt="Office of Naval Research logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>Office of Naval Research</h4></div></a>
+          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/pa-manufacturing-logo.png for this sponsor logo when available. -->
+          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2020/06/image-153x300.png" alt="Pennsylvania manufacturing sponsor logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Sponsor</div><h4>Pennsylvania Manufacturing Sponsor</h4></div></a>
+          <a class="sponsor-card" href="https://dced.pa.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/PA-DCED-Logo-RACP-1q5i7zw-300x76.jpg" alt="Pennsylvania Department of Community and Economic Development logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>PA Department of Community and Economic Development</h4></div></a>
+          <a class="sponsor-card" href="https://www.nist.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/nistlogo_centerexcellence-1cjege7-300x143.jpg" alt="NIST Center of Excellence logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>NIST Center of Excellence</h4></div></a>
+          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/defense-manufacturing-sponsor-logo.jpg for this sponsor logo when available. -->
+          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/images-300x136.jpg" alt="Defense manufacturing sponsor logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Sponsor</div><h4>Defense Manufacturing Sponsor</h4></div></a>
+          <a class="sponsor-card" href="https://iacmi.org/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/IACMI_logo-300x154.png" alt="IACMI The Composites Institute logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>IACMI - The Composites Institute</h4></div></a>
+          <a class="sponsor-card" href="https://www.darpa.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/darpa-logo-300x163.jpg" alt="DARPA logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>DARPA</h4></div></a>
+        </div>
+        <h3 class="sponsor-heading reveal">Partners</h3>
+        <div class="sponsor-grid reveal" aria-label="SHAPE Lab partners">
+          <a class="sponsor-card" href="https://www.methodsmachine.com/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="http://www.mmsonline.com/cdn/showrooms/profile/logo/Methods%20email%20logo.jpg" alt="Methods Machine Tools logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Methods Machine Tools</h4></div></a>
+          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/partner-logo-2.png for this partner logo when available. -->
+          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/logo-21lo2vj.png" alt="SHAPE Lab partner logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Industrial Collaboration Partner</h4></div></a>
+          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/partner-logo-3.png for this partner logo when available. -->
+          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://d2q79iu7y748jz.cloudfront.net/s/_logo/7e176f6b8f69ff34570ace1c3853f668" alt="SHAPE Lab partner logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Technical Collaboration Partner</h4></div></a>
+          <a class="sponsor-card" href="https://www.hagerstowncc.edu/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/hcclogo-2c6kfxy.jpg" alt="Hagerstown Community College logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Academic Partner</div><h4>Hagerstown Community College</h4></div></a>
+          <a class="sponsor-card" href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/MastercamBlackRed_RGB-1pobr8g.png" alt="Mastercam logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Mastercam</h4></div></a>
         </div>
       </div>
     </section>
@@ -2192,57 +2251,6 @@
     </section>
 
 
-    <section id="news" class="section section-pad">
-      <div class="container">
-        <div class="reveal">
-          <div class="section-kicker">News</div>
-          <h2 class="section-title">What's happening at SHAPE.</h2>
-        </div>
-        <article class="news-feature reveal">
-          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/Additive_Manufacturing-G.Manogharan.jpg" alt="Additive manufacturing project" decoding="async" loading="lazy"></div>
-          <div><h3>$1.6M DARPA award for AM fatigue prediction</h3><p>Dr. Manogharan was awarded $1.6 million through DARPA to improve prediction accuracy and reduce compute time for estimating service life of metal parts produced with additive manufacturing.</p></div>
-        </article>
-        <article class="news-feature reveal">
-          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/20250625_125103-1024x768.jpg" alt="Student poster recognition" decoding="async" loading="lazy"></div>
-          <div><h3>Kaitlyn Hartman awarded 2nd place in the MSEC 2025 student poster competition.</h3><p>Recognized for work on functionally graded TPMS lattice structures for biomedical applications.</p></div>
-        </article>
-        <article class="news-feature reveal">
-          <div class="feature-image"><img src="shapelab_photos/shapelab_photos/250096-psn-tpms_blueorange-300x225.jpg" alt="Two-metal 3D printed structure" decoding="async" loading="lazy"></div>
-          <div><h3>Beyond welding: researchers 3D print two metals in a single complex structure.</h3><p>Multi-material additive manufacturing research points toward new structures and joining-free production strategies.</p></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="sponsors" class="section section-pad surface">
-      <div class="container">
-        <div class="reveal"><div class="section-kicker">Sponsors</div><h2 class="section-title">Sponsors and partners.</h2><p class="section-lede">SHAPE Lab research is built around collaborations that connect manufacturing science to real application needs.</p></div>
-        <div class="sponsor-grid reveal" aria-label="SHAPE Lab sponsors">
-          <a class="sponsor-card" href="https://www.nsf.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2020/02/NSF_4-Color_bitmap_Logo-298x300.png" alt="National Science Foundation logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>National Science Foundation</h4></div></a>
-          <a class="sponsor-card" href="https://www.americamakes.us/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="http://www.tri-c.edu/programs/engineering-technology/manufacturing-engineering/3d-digital-design-and-manufacturing-technology/images/america-makes.jpg" alt="America Makes logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>America Makes</h4></div></a>
-          <a class="sponsor-card" href="https://www.afrl.af.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://media.defense.gov/2012/Nov/01/2000100887/-1/-1/0/121101-F-JZ008-240.JPG" alt="Air Force Research Laboratory logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>Air Force Research Laboratory</h4></div></a>
-          <a class="sponsor-card" href="https://www.nre.navy.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/Office_of_Naval_Research_Official_Logo-1q0s65d-300x137.png" alt="Office of Naval Research logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>Office of Naval Research</h4></div></a>
-          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/pa-manufacturing-logo.png for this sponsor logo when available. -->
-          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2020/06/image-153x300.png" alt="Pennsylvania manufacturing sponsor logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Sponsor</div><h4>Pennsylvania Manufacturing Sponsor</h4></div></a>
-          <a class="sponsor-card" href="https://dced.pa.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/PA-DCED-Logo-RACP-1q5i7zw-300x76.jpg" alt="Pennsylvania Department of Community and Economic Development logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>PA Department of Community and Economic Development</h4></div></a>
-          <a class="sponsor-card" href="https://www.nist.gov/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/nistlogo_centerexcellence-1cjege7-300x143.jpg" alt="NIST Center of Excellence logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>NIST Center of Excellence</h4></div></a>
-          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/defense-manufacturing-sponsor-logo.jpg for this sponsor logo when available. -->
-          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/images-300x136.jpg" alt="Defense manufacturing sponsor logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Sponsor</div><h4>Defense Manufacturing Sponsor</h4></div></a>
-          <a class="sponsor-card" href="https://iacmi.org/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/IACMI_logo-300x154.png" alt="IACMI The Composites Institute logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>IACMI - The Composites Institute</h4></div></a>
-          <a class="sponsor-card" href="https://www.darpa.mil/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2025/02/darpa-logo-300x163.jpg" alt="DARPA logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Government Partner</div><h4>DARPA</h4></div></a>
-        </div>
-        <h3 class="sponsor-heading reveal">Partners</h3>
-        <div class="sponsor-grid reveal" aria-label="SHAPE Lab partners">
-          <a class="sponsor-card" href="https://www.methodsmachine.com/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="http://www.mmsonline.com/cdn/showrooms/profile/logo/Methods%20email%20logo.jpg" alt="Methods Machine Tools logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Methods Machine Tools</h4></div></a>
-          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/partner-logo-2.png for this partner logo when available. -->
-          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/logo-21lo2vj.png" alt="SHAPE Lab partner logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Industrial Collaboration Partner</h4></div></a>
-          <!-- Add local file shapelab_photos/shapelab_photos/sponsors/partner-logo-3.png for this partner logo when available. -->
-          <a class="sponsor-card" href="https://sites.psu.edu/shapelab/sponsors/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://d2q79iu7y748jz.cloudfront.net/s/_logo/7e176f6b8f69ff34570ace1c3853f668" alt="SHAPE Lab partner logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Technical Collaboration Partner</h4></div></a>
-          <a class="sponsor-card" href="https://www.hagerstowncc.edu/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/hcclogo-2c6kfxy.jpg" alt="Hagerstown Community College logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Academic Partner</div><h4>Hagerstown Community College</h4></div></a>
-          <a class="sponsor-card" href="https://www.mastercam.com/" target="_blank" rel="noopener noreferrer"><div class="sponsor-logo"><img src="https://sites.psu.edu/shapelab/files/2017/03/MastercamBlackRed_RGB-1pobr8g.png" alt="Mastercam logo" loading="lazy" decoding="async"></div><div class="card-body"><div class="sponsor-label">Industry Partner</div><h4>Mastercam</h4></div></a>
-        </div>
-      </div>
-    </section>
-
     <section id="contact" class="section section-pad">
       <div class="container">
         <div class="reveal">
@@ -2272,9 +2280,10 @@
         <a href="#home">Home</a>
         <a href="#research">Research</a>
         <a href="#team">Team</a>
-        <a href="#publications">Publications</a>
         <a href="#news">News</a>
         <a href="#sponsors">Sponsors</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
@@ -2298,18 +2307,31 @@
 
     let parallaxTicking = false;
     let parallaxEnabled = false;
-    let parallaxTravel = -150;
+    const parallaxImageRatio = 1823 / 863;
+    let parallaxTravel = 0;
     let scrollRange = 1;
 
+    function getRenderedParallaxImageHeight() {
+      if (window.innerWidth <= 900) {
+        return window.innerWidth * 1.8 * parallaxImageRatio;
+      }
+
+      if (window.innerWidth >= 1800) {
+        return Math.min(window.innerWidth, 1920) * parallaxImageRatio;
+      }
+
+      return window.innerWidth * parallaxImageRatio;
+    }
+
     function refreshParallaxMetrics() {
-      const rootStyles = getComputedStyle(document.documentElement);
-      parallaxTravel = parseFloat(rootStyles.getPropertyValue("--am-parallax-travel")) || -150;
       scrollRange = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-      parallaxEnabled = !motionQuery.matches && window.innerWidth >= 760 && parallaxLayers.length > 0;
+      parallaxTravel = Math.max(0, getRenderedParallaxImageHeight() - window.innerHeight);
+      parallaxEnabled = !motionQuery.matches && parallaxLayers.length > 0;
 
       if (!parallaxEnabled) {
         parallaxLayers.forEach(({ element }) => {
           element.style.transform = "translate3d(0, 0, 0)";
+          element.style.setProperty("--am-bg-y", "0px");
         });
       }
     }
@@ -2322,8 +2344,8 @@
       const progress = Math.min(1, Math.max(0, scrollY / scrollRange));
 
       parallaxLayers.forEach(({ element, speed }) => {
-        const y = progress * speed * parallaxTravel;
-        element.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
+        const y = progress * speed * parallaxTravel * -1;
+        element.style.setProperty("--am-bg-y", `${y.toFixed(2)}px`);
       });
     }
 
