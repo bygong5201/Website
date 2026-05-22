@@ -1008,35 +1008,20 @@
 
     .visitor-map {
       position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1456 / 1024;
       min-height: 450px;
       overflow: hidden;
       background: #fff;
       isolation: isolate;
     }
 
-    .visitor-map svg {
-      position: absolute;
-      inset: 7% 7%;
+    .visitor-map-image {
       z-index: 1;
-      width: 86%;
-      height: 86%;
-    }
-
-    .map-graticule,
-    .map-latitude,
-    .map-ocean-current,
-    .map-country-border,
-    .map-coast-detail,
-    .map-label {
-      display: none;
-    }
-
-    .map-land,
-    .map-island {
-      fill: rgba(236, 235, 230, 0.96);
-      stroke: rgba(211, 215, 211, 0.62);
-      stroke-width: 0.75;
-      vector-effect: non-scaling-stroke;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .visitor-point {
@@ -1155,13 +1140,6 @@
 
     .visitor-city-list span {
       color: var(--muted);
-    }
-
-    .map-graticule {
-      fill: none;
-      stroke: rgba(19, 41, 75, 0.12);
-      stroke-width: 0.8;
-      vector-effect: non-scaling-stroke;
     }
 
     .site-footer {
@@ -2956,7 +2934,7 @@
       <div class="container">
         <div class="reveal">
           <h2 class="section-title">Where the world <span class="visitor-title-accent">tunes in from.</span></h2>
-          <p class="section-lede">A live snapshot of every country that's visited this site. Aggregated, anonymous, and privacy-preserving.</p>
+          <p class="section-lede">A privacy-preserving snapshot of visitor locations. GitHub Pages displays fallback totals unless an external analytics feed is connected.</p>
         </div>
         <div class="visitor-panel reveal">
           <div class="visitor-stats-grid" aria-label="Visitor summary">
@@ -2975,27 +2953,8 @@
           </div>
           <div class="visitor-map-card">
             <div class="visitor-map" id="visitor-map" aria-label="World map of website visitor locations">
-              <svg viewBox="0 0 1000 500" role="img" aria-hidden="true" focusable="false">
-                <path class="map-graticule" d="M0 83.3H1000M0 166.7H1000M0 250H1000M0 333.3H1000M0 416.7H1000M83.3 0V500M166.7 0V500M250 0V500M333.3 0V500M416.7 0V500M500 0V500M583.3 0V500M666.7 0V500M750 0V500M833.3 0V500M916.7 0V500"/>
-                <path class="map-latitude" d="M28 122C188 101 316 104 480 126S784 150 972 123M25 376C176 398 324 395 476 373S787 351 974 376"/>
-                <path class="map-ocean-current" d="M52 166C142 128 205 151 293 126C385 100 485 86 568 114M47 319C153 284 272 295 356 334C452 379 560 390 681 352M676 170C757 119 847 108 952 141M625 411C720 388 812 406 930 376"/>
-                <path class="map-land" d="M113 102l25-26 48-15 42 9 32 21 37 7 26 28-6 24 27 16 21 35-12 32-35 14-22 28-12 41 17 37-21 43-43 27-40-7-18-45-21-28-32-17-16-42-30-31 13-41-23-37 16-49z"/>
-                <path class="map-land" d="M260 253l28-11 38 13 35 31 18 45-8 55-25 51-36 34-31-22-18-49-20-46 8-51z"/>
-                <path class="map-land" d="M430 118l43-29 72-23 72 10 46 22 51 4 42 29 5 34-33 26-55-7-38 17-42-3-37 21-49-8-37 22-48-28-25-39z"/>
-                <path class="map-land" d="M489 211l57-19 57 18 37 37 32 47 10 58-18 59-34 48-35-7-17-44-29-34-11-53-36-36-33-15z"/>
-                <path class="map-land" d="M653 145l58-42 82-36 77 7 57 26 31 44-15 37 31 21-8 40-45 34-58-8-38 20-52-14-41 18-45-22-30 14-38-30 18-39-35-34z"/>
-                <path class="map-land" d="M781 318l47-18 56 18 50 45 24 43-29 33-61 1-44-28-35-45z"/>
-                <path class="map-island" d="M193 71l18-18 36 7 10 21-26 13-25-3zM340 210l23 5 12 21-17 19-22-7-8-22zM482 69l34-22 46 8 15 22-34 13-41-2zM605 68l22-20 35 7 14 22-22 17-36-6zM729 317l31-12 22 17-7 28-31 7-24-17zM875 247l25-14 28 8 2 22-27 11-25-6zM912 118l28-10 23 15-4 25-28 10-24-16zM404 407l22-8 19 17-7 23-24 3-16-15z"/>
-                <path class="map-country-border" d="M155 110l32 30 5 48-29 33M205 91l11 56 37 27-8 54M275 120l-21 55 18 51 40 15M151 285l41 18 24 52-3 51M273 286l42 34 21 58-18 49M466 125l32 37 58 2 27 35M560 84l-5 80 27 34 6 69M640 108l-35 55 19 54 48 29M494 247l52 19 22 57-6 60M604 248l36 53 0 75-22 59M704 151l58 27 12 65-31 44M801 93l-22 74 36 58 57 20M892 105l-44 69 15 68 53 32M815 333l41 31 12 61M883 325l-26 43 23 61"/>
-                <path class="map-coast-detail" d="M91 148l35 7 19-21 34 6 12 27 33-4 31 25 37-3 10 28 38 1M166 415l42 6 20-24 24 35M260 254l38 21 29-12 18 31 30 35M436 156l44-12 50 22 41-6 35 31 54-10 53 17M665 412l-22 27-30 21M658 151l47 4 47-28 50 18 38-28 48 25 47 12M788 322l49 17 37-9 52 39"/>
-                <text class="map-label" x="142" y="92">North America</text>
-                <text class="map-label" x="268" y="303">South America</text>
-                <text class="map-label" x="506" y="126">Europe</text>
-                <text class="map-label" x="548" y="292">Africa</text>
-                <text class="map-label" x="753" y="145">Asia</text>
-                <text class="map-label" x="824" y="392">Oceania</text>
-              </svg>
-              <div class="visitor-empty" id="visitor-empty">No visitor-location data is connected yet. In Lovable, point the map config at a coarse analytics feed that returns city, region, or country totals.</div>
+              <img class="visitor-map-image" src="assets/world-map.png" alt="" loading="lazy" decoding="async">
+              <div class="visitor-empty" id="visitor-empty">GitHub Pages can show this map, but live location totals need a separate analytics endpoint.</div>
             </div>
           </div>
           <div class="visitor-lists-grid" aria-label="Visitor rankings">
@@ -3202,9 +3161,11 @@
     refreshParallaxMetrics();
     updateParallax();
 
+    const visitorMapEndpoint = "";
+    const normalizedVisitorMapEndpoint = visitorMapEndpoint.replace(/\/$/, "");
     const visitorMapConfig = {
-      dataEndpoint: "",
-      trackEndpoint: "",
+      dataEndpoint: normalizedVisitorMapEndpoint ? `${normalizedVisitorMapEndpoint}/visitors` : "",
+      trackEndpoint: normalizedVisitorMapEndpoint ? `${normalizedVisitorMapEndpoint}/visitors` : "",
       ...(window.SHAPE_VISITOR_MAP_CONFIG || {})
     };
 
@@ -3282,8 +3243,8 @@
     }
 
     function projectVisitorPoint(latitude, longitude) {
-      const left = ((longitude + 180) / 360) * 100;
-      const top = ((90 - latitude) / 180) * 100;
+      const left = 4 + (((longitude + 180) / 360) * 92);
+      const top = 12 + (((90 - latitude) / 180) * 76);
       return {
         left: Math.min(98, Math.max(2, left)),
         top: Math.min(96, Math.max(4, top))
@@ -3410,7 +3371,9 @@
       }
 
       try {
-        const response = await fetch(visitorMapConfig.dataEndpoint, { headers: { "Accept": "application/json" } });
+        const dataUrl = new URL(visitorMapConfig.dataEndpoint, window.location.href);
+        dataUrl.searchParams.set("t", Date.now().toString());
+        const response = await fetch(dataUrl, { headers: { "Accept": "application/json" }, cache: "no-store" });
         if (!response.ok) throw new Error("Visitor map request failed");
         renderVisitorLocations(normalizeVisitorLocations(await response.json()));
       } catch {
