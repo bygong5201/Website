@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S.H.A.P.E. Lab - Systems for Hybrid-Additive Process Engineering | Penn State</title>
   <meta name="description" content="The mission of the SHAPE Lab is to advance Additive Manufacturing, Hybrid Manufacturing, and Sand-Printing for Metal Casting.">
+  <base href="./">
   <link rel="icon" type="image/png" href="shapelab_photos/shapelab_photos/trans-logo.png">
   <link rel="apple-touch-icon" href="shapelab_photos/shapelab_photos/trans-logo.png">
   <link rel="preload" as="image" href="additive-manufacturing-hero/assets/shape-parallax-background.png">
@@ -410,6 +411,17 @@
 
     .profile-card .image-frame { aspect-ratio: 3 / 4; }
 
+    .profile-card .image-frame img {
+      object-fit: contain;
+      object-position: center;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .profile-card:hover .image-frame img {
+      transform: none;
+    }
+
     .profile-card h4 {
       font-size: 1rem;
     }
@@ -477,8 +489,9 @@
     .team-photo img {
       width: 100%;
       max-height: 560px;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
+      background: var(--secondary);
     }
 
     .director h3 {
@@ -695,7 +708,9 @@
     .gallery-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
+      background: #101723;
     }
 
     .gallery-controls {
@@ -887,7 +902,9 @@
     .feature-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
+      background: var(--secondary);
     }
 
     .news-feature h3 {
@@ -1138,12 +1155,6 @@
 
     .visitor-city-list span {
       color: var(--muted);
-    }
-
-    .visitor-integration-note {
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.5;
     }
 
     .map-graticule {
@@ -3001,7 +3012,6 @@
               </ul>
             </section>
           </div>
-          <p class="visitor-integration-note">Lovable-ready: set <code>window.SHAPE_VISITOR_MAP_CONFIG</code> with <code>dataEndpoint</code> and <code>trackEndpoint</code>, or provide <code>window.SHAPE_VISITOR_LOCATIONS</code> for server-rendered totals.</p>
         </div>
       </div>
     </section>
