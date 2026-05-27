@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>S.H.A.P.E. Lab - Systems for Hybrid-Additive Process Engineering | Penn State</title>
   <meta name="description" content="The mission of the SHAPE Lab is to advance Additive Manufacturing, Hybrid Manufacturing, and Sand-Printing for Metal Casting.">
   <link rel="icon" type="image/png" href="shapelab_photos/shapelab_photos/trans-logo.png">
@@ -35,11 +35,15 @@
 
     * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
     body {
       position: relative;
       margin: 0;
+      overflow-x: hidden;
       background: var(--background);
       color: var(--foreground);
       font-family: Inter, "Segoe UI", system-ui, sans-serif;
@@ -53,7 +57,11 @@
       z-index: 1;
     }
 
-    img { display: block; max-width: 100%; }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
     a { color: inherit; text-decoration: none; }
 
     h1, h2, h3, h4 {
@@ -1263,7 +1271,11 @@
 
     @media (max-width: 940px) {
       .nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
-      .nav-links { flex-wrap: wrap; }
+      .brand { max-width: 100%; }
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+      }
       .cards-3, .cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .alumni-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .sponsor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1272,22 +1284,240 @@
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 1.5rem, 72rem); }
+      .container { width: min(100% - 1.25rem, 72rem); }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+      }
+
+      .nav {
+        min-height: auto;
+        gap: 10px;
+        padding: 9px 0 8px;
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-title { font-size: 0.96rem; }
+
+      .brand-subtitle {
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+      }
+
+      .nav-links {
+        flex-wrap: nowrap;
+        gap: 2px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-links::-webkit-scrollbar { display: none; }
+
+      .nav-links a {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        font-size: 0.82rem;
+        white-space: nowrap;
+      }
+
+      .hero {
+        min-height: calc(82svh - 84px);
+      }
+
+      .hero-inner {
+        padding: 4.5rem 0;
+      }
+
+      .hero-logo {
+        width: min(142px, 42vw);
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 17vw, 4.45rem);
+        line-height: 0.98;
+      }
+
+      .hero p {
+        max-width: 20rem;
+        margin: 14px auto 0;
+        font-size: clamp(1.05rem, 5vw, 1.32rem);
+        line-height: 1.25;
+      }
+
+      .section-pad { padding: 3.8rem 0; }
+
+      .section-title {
+        font-size: clamp(2.2rem, 11vw, 3rem);
+        line-height: 1.04;
+      }
+
+      .section-lede {
+        margin-top: 16px;
+        font-size: 1rem;
+        line-height: 1.62;
+      }
+
+      .mission-text {
+        font-size: clamp(1.35rem, 7vw, 1.65rem);
+      }
+
+      .mission-list li {
+        grid-template-columns: 32px 1fr;
+        gap: 10px;
+        font-size: clamp(1.12rem, 5.8vw, 1.35rem);
+      }
+
+      .grid { gap: 18px; }
+
+      .project-group,
+      .team-group,
+      .news-feature,
+      .publication-list,
+      .news-list,
+      .sponsor-list,
+      .gallery-stage,
+      .contact-card {
+        margin-top: 2.4rem;
+      }
+
       .cards-3, .cards-4, .sponsor-grid { grid-template-columns: 1fr; }
       .alumni-grid { grid-template-columns: 1fr; }
+
+      .card-body { padding: 18px; }
+
+      .director {
+        gap: 20px;
+      }
+
+      .director h3 {
+        font-size: clamp(1.75rem, 9vw, 2.2rem);
+      }
+
+      .director img {
+        max-width: 280px;
+        margin-inline: auto;
+      }
+
+      .team-photo {
+        margin: 1.6rem 0 2rem;
+      }
+
       .publication-group { padding: 20px; }
-      .publication-group .publication-item { grid-template-columns: 1fr; }
+      .publication-group .publication-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 0;
+      }
+
+      .publication-item h3,
+      .news-item h3,
+      .sponsor-item h3 {
+        font-size: 1.12rem;
+        line-height: 1.25;
+      }
+
+      .publication-item,
+      .news-item,
+      .sponsor-item {
+        padding: 20px;
+      }
+
       .publication-actions { justify-content: flex-start; }
       .gallery-stage { aspect-ratio: 4 / 3; }
       .gallery-controls { padding: 12px; }
       .gallery-control { width: 40px; height: 40px; font-size: 1.45rem; }
+
+      .sponsor-logo {
+        min-height: 128px;
+        padding: 22px;
+      }
+
+      .news-feature {
+        gap: 18px;
+      }
+
+      .news-feature > div:not(.feature-image) {
+        padding: 20px;
+      }
+
+      .news-feature h3 {
+        font-size: clamp(1.45rem, 7vw, 1.8rem);
+      }
+
+      .contact-card h3 {
+        font-size: 1.65rem;
+      }
+
       .visitor-stats-grid,
       .visitor-lists-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
-      .section-pad { padding: 4rem 0; }
+
       .director, .contact-card { padding: 22px; }
-      .visitor-map { min-height: 330px; }
+      .visitor-map {
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+      }
+
+      .visitor-point::after {
+        display: none;
+      }
+
+      .visitor-stat-card,
+      .visitor-ranking-card {
+        padding: 18px;
+      }
+
       .visitor-empty { inset: auto 14px 14px 14px; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: min(100% - 1rem, 72rem); }
+
+      .section-title {
+        font-size: clamp(2rem, 10.5vw, 2.55rem);
+      }
+
+      .card h4 {
+        font-size: 1.08rem;
+      }
+
+      .profile-links a,
+      .director-links a,
+      .text-link {
+        min-height: 38px;
+      }
+
+      .publication-group,
+      .publication-item,
+      .news-item,
+      .sponsor-item,
+      .news-feature > div:not(.feature-image),
+      .director,
+      .contact-card {
+        padding: 16px;
+      }
+
+      .visitor-empty {
+        position: static;
+        max-width: none;
+        margin: 12px;
+      }
     }
 
     @media (max-width: 759px) {
